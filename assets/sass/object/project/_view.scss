@@ -16,7 +16,6 @@
     font-weight: 900;
     line-height: 2;
     color:#fff;
-    mix-blend-mode: overlay;
     @include min-screen($bp_tb_v){
       top: sizeCalc(60, $w, 'vw');
       font-size: sizeCalc(24, $w, 'vw');
@@ -36,7 +35,7 @@
     padding-top:100vh;
     margin-right: auto;
     margin-left: auto;
-    background:$blue;
+    background:#8ad026;
     @include min-screen($bp_tb_v){
     }
     @include min-screen($bp_base){
@@ -44,7 +43,6 @@
   }
 
   &__svg{
-    mix-blend-mode: overlay;
     @include min-screen($bp_tb_v){
     }
     @include min-screen($bp_base){
@@ -62,7 +60,6 @@
     bottom:sizeCalc(150, $w_sp, 'vw');
     z-index: 100;
     perspective: 1000px;
-    mix-blend-mode: overlay;
     @include min-screen($bp_tb_v){
       bottom:sizeCalc(60, $w, 'vw');
     }

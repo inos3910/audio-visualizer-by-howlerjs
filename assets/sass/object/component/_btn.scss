@@ -25,7 +25,7 @@
   &:hover{
     @include min-screen($bp_tb_v){
       .c-btn__face{
-        color:$blue;
+        color:#8ad026;
         background:#fff;
       }
     }
