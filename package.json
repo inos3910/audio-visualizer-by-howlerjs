@@ -61,6 +61,7 @@
         "gulp-watch": "^5.0.0",
         "gulp-webp": "^4.0.1",
         "gulp.spritesmith": "^6.11.0",
+        "howler": "^2.2.0",
         "imagemin-jpegtran": "^7.0.0",
         "imagemin-mozjpeg": "^9.0.0",
         "imagemin-pngquant": "^9.0.0",

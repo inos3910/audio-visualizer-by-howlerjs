@@ -1,14 +1,80 @@
 .c-btn{
+  position: relative;
   display: block;
-  font-size: sizeCalc(36, $w_sp, 'vw');
+  width: sizeCalc(300, $w_sp, 'vw');
+  height: sizeCalc(90, $w_sp, 'vw');
+  margin-right: auto;
+  margin-left: auto;
+  font-size: sizeCalc(30, $w_sp, 'vw');
   font-weight: 600;
   letter-spacing: .15em;
   color:#fff;
-  border:1px solid;
+  transform-style: preserve-3d;
   @include min-screen($bp_tb_v){
+    width: sizeCalc(300, $w, 'vw');
+    height: sizeCalc(80, $w, 'vw');
     font-size: sizeCalc(18, $w, 'vw');
+    cursor:pointer;
   }
   @include min-screen($bp_base){
+    width: 300px;
+    height: 80px;
     font-size: 18px;
+  }
+
+  &:hover{
+    @include min-screen($bp_tb_v){
+      .c-btn__face{
+        color:$blue;
+        background:#fff;
+      }
+    }
+  }
+
+  &__face{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid;
+    transition:$transition;
+    @include min-screen($bp_tb_v){
+    }
+    @include min-screen($bp_base){
+    }
+
+    &--play{
+      transform: translateZ(25px);
+      @include min-screen($bp_tb_v){
+      }
+      @include min-screen($bp_base){
+      }
+    }
+
+    &--stop{
+      opacity: 0;
+      transform: rotateX( 90deg) translateZ(25px);
+      @include min-screen($bp_tb_v){
+      }
+      @include min-screen($bp_base){
+      }
+    }
+  }
+
+  &.is-play{
+    transform: translateZ(-25px) rotateX( -90deg);
+
+    .c-btn__face{
+      &--play{
+        opacity: 0;
+      }
+      &--stop{
+        opacity: 1;
+      }
+    }
   }
 }

@@ -58,24 +58,12 @@
     left: 0;
     bottom:sizeCalc(60, $w_sp, 'vw');
     z-index: 100;
-    width: sizeCalc(300, $w_sp, 'vw');
-    margin-right: auto;
-    margin-left: auto;
-    padding: sizeCalc(15, $w_sp, 'vw') sizeCalc(15, $w_sp, 'vw');
+    perspective: 1000px;
     @include min-screen($bp_tb_v){
-      width: sizeCalc(300, $w, 'vw');
       bottom:sizeCalc(60, $w, 'vw');
     }
     @include min-screen($bp_base){
-      width: 300px;
       bottom: 60px;
-    }
-
-    &:hover{
-      @include min-screen($bp_tb_v){
-        color:$blue;
-        background:#fff;
-      }
     }
   }
 }
