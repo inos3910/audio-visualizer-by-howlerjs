@@ -5,10 +5,6 @@
 *.map
 *.lock
 *.webp
-*.mp3
-*.mp4
-*.m4a
-*.wav
 
 .htaccess
 .htpasswd
