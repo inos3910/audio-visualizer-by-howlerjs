@@ -82,7 +82,7 @@ export class Main {
     // 周波数領域の波形データを引数の配列に格納する
     this.analyserNode.getByteFrequencyData(this.freqs);
     //SVG横幅が波形データに対してどのくらいの長さになるか
-    const barWidth = this.svg.width.baseVal.value * 1.5 / this.analyserNode.frequencyBinCount;
+    const barWidth = this.svg.width.baseVal.value / this.analyserNode.frequencyBinCount;
 
     //SVGのpathに適用
     this.drawSvgPath(barWidth);
