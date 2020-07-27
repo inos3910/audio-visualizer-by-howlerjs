@@ -35,9 +35,11 @@ export class Main {
   }
 
   //音源を停止
-  stopAudio(duration = 1000){
+  stopAudio(duration = 1500){
+    //フェードアウト
     this.sound.fade(1, 0, duration, this.playingSound);
-    this.gainNode.gain.linearRampToValueAtTime(0, Howler.ctx.currentTime + 1 );
+    //gainNodeをendTime（第二引数）までに0（第一引数）にする
+    this.gainNode.gain.linearRampToValueAtTime(0, Howler.ctx.currentTime + 1.5 );
   }
 
   //音源を再生
@@ -51,12 +53,14 @@ export class Main {
 
   //オーディオビジュアライザーの初期設定 各ノードをつなぐ
   initAudioVisualizer(){
+    //音源を視覚化するために波形データの配列を取得する
     this.analyserNode = Howler.ctx.createAnalyser();
     this.freqs = new Uint8Array(this.analyserNode.frequencyBinCount);
-
+    //ボリュームコントローラ
+    Howler.ctx.createGain = Howler.ctx.createGain || Howler.ctx.createGainNode;
     this.gainNode = Howler.ctx.createGain();
     this.gainNode.gain.setValueAtTime(1, Howler.ctx.currentTime);
-
+    //各ノードをつなぐ
     Howler.masterGain.connect(this.analyserNode);
     this.analyserNode.connect(this.gainNode);
     this.gainNode.connect(Howler.ctx.destination);
@@ -64,20 +68,22 @@ export class Main {
 
   //オーディオビジュアライザーのSVGを描画
   drawAudioVisualizer(){
+    //gainが0になるとアニメーションを終了
     if(this.gainNode.gain.value === 0){
       if(this.drawTimer){
         window.cancelAnimationFrame(this.drawTimer);
         return;
       }
     }
-    // 0~1まで設定でき、0に近いほど描画の更新がスムーズになり, 1に近いほど描画の更新が鈍くなる
+    // 0~1 0に近い方が描画がスムーズになる
     this.analyserNode.smoothingTimeConstant = 0.1;
     // FFTサイズ
     this.analyserNode.fftSize = 2048 * 2;
     // 周波数領域の波形データを引数の配列に格納する
     this.analyserNode.getByteFrequencyData(this.freqs);
     const barWidth = this.svg.width.baseVal.value * 2 / this.analyserNode.frequencyBinCount;
-    //SVGのpathに適用（左）
+
+    //SVGのpathに適用
     let ld = 'M';
     this.freqs.forEach((y, i) => {
       if(i % 3 === 0){
@@ -92,6 +98,7 @@ export class Main {
     });
     this.svgPath.setAttribute('d', ld);
 
+    //毎フレームごとに描画
     this.drawTimer = window.requestAnimationFrame(this.drawAudioVisualizer.bind(this));
   }
 }

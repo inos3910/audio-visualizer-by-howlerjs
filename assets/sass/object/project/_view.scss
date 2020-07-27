@@ -15,6 +15,7 @@
     font-size: sizeCalc(30, $w_sp, 'vw');
     font-weight: 900;
     color:#fff;
+    mix-blend-mode: overlay;
     @include min-screen($bp_tb_v){
       top: sizeCalc(60, $w, 'vw');
       font-size: sizeCalc(24, $w, 'vw');
@@ -42,6 +43,7 @@
   }
 
   &__svg{
+    mix-blend-mode: overlay;
     @include min-screen($bp_tb_v){
     }
     @include min-screen($bp_base){
@@ -56,14 +58,40 @@
     position: absolute;
     right:0;
     left: 0;
-    bottom:sizeCalc(60, $w_sp, 'vw');
+    bottom:sizeCalc(150, $w_sp, 'vw');
     z-index: 100;
     perspective: 1000px;
+    mix-blend-mode: overlay;
     @include min-screen($bp_tb_v){
       bottom:sizeCalc(60, $w, 'vw');
     }
     @include min-screen($bp_base){
       bottom: 60px;
+    }
+  }
+
+  &__link{
+    position: absolute;
+    bottom:30px;
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+    color:#fff;
+    @include min-screen($bp_tb_v){
+      right:15px;
+      bottom:15px;
+      width: auto;
+      text-align: left;
+    }
+    @include min-screen($bp_base){
+    }
+
+    a{
+      color:#fff;
+
+      &:hover{
+        text-decoration: underline;
+      }
     }
   }
 }
