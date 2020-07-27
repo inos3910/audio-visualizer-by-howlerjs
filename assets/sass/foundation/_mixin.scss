@@ -1,0 +1,168 @@
+//mixin *********************//
+//line-height
+@mixin lh($fontSize, $lineSpacing) {
+  line-height: $lineSpacing/$fontSize;
+}
+
+@mixin line-clamp($num) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $num;
+  overflow: hidden;
+}
+
+//text-align justify
+@mixin text-justify {
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+@mixin text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+//ボタンのアクセシビリティ
+@mixin selectNone {
+  //選択制御
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  //ポップアップメニュー表示制御
+  -webkit-touch-callout: none;
+
+  //タップ時の選択カラーを透明にする
+  -webkit-tap-highlight-color: rgba(#000,0);
+}
+
+//font-size
+@mixin fz($size) {
+  font-size:($size)+px;
+  font-size:($size/10)+rem;
+}
+
+//animation
+@mixin animation($animation-name) {
+  -webkit-animation: $animation-name;
+  -moz-animation: $animation-name;
+  animation: $animation-name;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+//media-query mixin
+@mixin max-screen($break-point) {
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
+}
+@mixin min-screen($break-point) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
+}
+@mixin screen($break-point-min, $break-point-max) {
+  @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+    @content;
+  }
+}
+
+//placeholder-color
+@mixin placeholderColor($color) {
+  &:placeholder-shown {
+    color: $color;
+  }
+  &::-webkit-input-placeholder {
+    color:$color;
+  }
+  &:-moz-placeholder {
+    color:$color;
+    opacity: 1;
+  }
+  &::-moz-placeholder {
+    color:$color;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color:$color;
+  }
+}
+
+//placeholder
+@mixin placeholder {
+  &:placeholder-shown {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    opacity: 1;
+    @content;
+  }
+  &::-moz-placeholder {
+    opacity: 1;
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+//retina bg
+@mixin retina-bg($file, $type) {
+  background-image: resolve('#{$file}.#{$type}');
+  @media #{$retina} {
+    background-image: resolve('#{$file}@2x.#{$type}');
+  }
+}
+
+@mixin retina-bg-multi($file1, $type1, $file2, $type2) {
+  background-image:
+  url('#{$file1}.#{$type1}'),
+  url('#{$file2}.#{$type2}')
+  ;
+
+  @media #{$retina} {
+    background-image:
+    url('#{$file1}@2x.#{$type1}'),
+    url('#{$file2}@2x.#{$type2}')
+    ;
+  }
+}
+
+/**
+* スプライト画像のサイズ・位置をパーセント指定して出力
+* @param {String} $sprite スプライト画像の変数
+**/
+@mixin sprite-size($sprite){
+  $totalW  : strip-unit(nth($sprite, 7));
+  $totalH  : strip-unit(nth($sprite, 8));
+  $bgW     : strip-unit(nth($sprite, 5));
+  $bgH     : strip-unit(nth($sprite, 6));
+  $bgX     : strip-unit(nth($sprite, 1));
+  $bgY     : strip-unit(nth($sprite, 2));
+  $bgsizeW : $totalW / $bgW * 100%;
+  $bgsizeH : $totalH / $bgH * 100%;
+  $bgPosX  : $bgX / ($totalW - $bgW) * 100%;
+  $bgPosY  : $bgY / ($totalH - $bgH) * 100%;
+
+  @include sprite-image($sprite);
+  background-size:($totalW / $bgW * 100%);
+  background-position: $bgPosX $bgPosY;
+}

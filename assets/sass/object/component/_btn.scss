@@ -1,0 +1,14 @@
+.c-btn{
+  display: block;
+  font-size: sizeCalc(36, $w_sp, 'vw');
+  font-weight: 600;
+  letter-spacing: .15em;
+  color:#fff;
+  border:1px solid;
+  @include min-screen($bp_tb_v){
+    font-size: sizeCalc(18, $w, 'vw');
+  }
+  @include min-screen($bp_base){
+    font-size: 18px;
+  }
+}

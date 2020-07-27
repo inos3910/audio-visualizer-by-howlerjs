@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/* ---------------------------------------------------------
+Foundation
+--------------------------------------------------------- */
+@import "foundation/variable";
+@import "foundation/mixin";
+@import "foundation/function";
+@import "foundation/reset";
+@import "foundation/font";
+@import "foundation/setting";
+
+/* ---------------------------------------------------------
+Layout
+--------------------------------------------------------- */
+// @import "layout/cover";
+// @import "layout/header";
+// @import "layout/footer";
+// @import "layout/main";
+
+/* ---------------------------------------------------------
+Object
+--------------------------------------------------------- */
+//component
+@import "object/component/btn";
+
+//project
+@import "object/project/view";
+
+//utility
+@import "object/utility/utility";
+//@import "object/utility/animation";
+

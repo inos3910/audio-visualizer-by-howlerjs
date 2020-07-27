@@ -1,0 +1,74 @@
+* {
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	font-size: 100%;
+	font: inherit;
+	border: 0;
+	outline:0;
+	box-sizing: border-box;
+
+	&::before,
+	&::after{
+		box-sizing: border-box;
+	}
+
+}
+
+article,
+aside,
+dialog,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+audio,
+canvas,
+video,
+br,
+hr {
+	display:block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+li{
+	list-style-type: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+
+	&::before,
+	&::after{
+		content: '';
+		content: none;
+	}
+
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells:show;
+}
+
+img {
+	vertical-align: middle;
+}
+
+iframe[name='google_conversion_frame'] {
+	display: block;
+	height: 0;
+}

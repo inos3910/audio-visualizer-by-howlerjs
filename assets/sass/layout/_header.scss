@@ -1,0 +1,28 @@
+.l-header {
+  @include min-screen($bp_sp_h){
+  }
+
+  @include min-screen($bp_tb_v){
+  }
+
+  @include min-screen($bp_tb_h){
+  }
+
+  @include min-screen($bp_base){
+  }
+}
+
+.l-header-inner{
+  @include min-screen($bp_sp_h){
+  }
+
+  @include min-screen($bp_tb_v){
+  }
+
+  @include min-screen($bp_tb_h){
+  }
+
+  @include min-screen($bp_base){
+  }
+}
+

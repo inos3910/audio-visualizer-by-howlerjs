@@ -1,0 +1,41 @@
+.l-footer {
+  @include min-screen($bp_sp_h){
+  }
+
+  @include min-screen($bp_tb_v){
+  }
+
+  @include min-screen($bp_tb_h){
+  }
+
+  @include min-screen($bp_base){
+  }
+}
+
+.l-footer-inner{
+  @include min-screen($bp_sp_h){
+  }
+
+  @include min-screen($bp_tb_v){
+  }
+
+  @include min-screen($bp_tb_h){
+  }
+
+  @include min-screen($bp_base){
+  }
+}
+
+.l-footer-copyright{
+  @include min-screen($bp_sp_h){
+  }
+
+  @include min-screen($bp_tb_v){
+  }
+
+  @include min-screen($bp_tb_h){
+  }
+
+  @include min-screen($bp_base){
+  }
+}

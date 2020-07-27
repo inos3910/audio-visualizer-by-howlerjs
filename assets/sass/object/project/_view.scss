@@ -1,0 +1,81 @@
+.p-view{
+  position: relative;
+  @include min-screen($bp_tb_v){
+  }
+  @include min-screen($bp_base){
+  }
+
+  &__title{
+    position: absolute;
+    top: sizeCalc(60, $w_sp, 'vw');
+    left:0;
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+    font-size: sizeCalc(30, $w_sp, 'vw');
+    font-weight: 900;
+    color:#fff;
+    @include min-screen($bp_tb_v){
+      top: sizeCalc(60, $w, 'vw');
+      font-size: sizeCalc(24, $w, 'vw');
+    }
+    @include min-screen($bp_base){
+      top:60px;
+      font-size: 24px;
+    }
+  }
+
+  &__box{
+    position: relative;
+    top:0;
+    left:0;
+    width:100%;
+    height: 0;
+    padding-top:100vh;
+    margin-right: auto;
+    margin-left: auto;
+    background:$blue;
+    @include min-screen($bp_tb_v){
+    }
+    @include min-screen($bp_base){
+    }
+  }
+
+  &__svg{
+    @include min-screen($bp_tb_v){
+    }
+    @include min-screen($bp_base){
+    }
+
+    path{
+
+    }
+  }
+
+  &__btn{
+    position: absolute;
+    right:0;
+    left: 0;
+    bottom:sizeCalc(60, $w_sp, 'vw');
+    z-index: 100;
+    width: sizeCalc(300, $w_sp, 'vw');
+    margin-right: auto;
+    margin-left: auto;
+    padding: sizeCalc(15, $w_sp, 'vw') sizeCalc(15, $w_sp, 'vw');
+    @include min-screen($bp_tb_v){
+      width: sizeCalc(300, $w, 'vw');
+      bottom:sizeCalc(60, $w, 'vw');
+    }
+    @include min-screen($bp_base){
+      width: 300px;
+      bottom: 60px;
+    }
+
+    &:hover{
+      @include min-screen($bp_tb_v){
+        color:$blue;
+        background:#fff;
+      }
+    }
+  }
+}

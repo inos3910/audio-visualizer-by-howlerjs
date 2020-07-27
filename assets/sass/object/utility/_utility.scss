@@ -1,0 +1,47 @@
+.u-frame{
+  @include min-screen($bp_tb_v){
+    $pd : sizeCalc(200, $w, 'vw');
+    max-width:calc(100% - #{$pd});
+    margin-right:auto;
+    margin-left:auto;
+  }
+  @include min-screen($bp_base){
+    max-width:#{$frame_w}px;
+  }
+}
+
+.u-noscroll{
+  overflow: hidden;
+  height:100%;
+}
+
+.u-overflowHidden {
+  overflow: hidden;
+}
+
+.u-noevent{
+  pointer-events:none;
+}
+
+.u-exSp {
+  display: none;
+  @include min-screen($bp_sp_h){
+    display: block;
+  }
+}
+
+.u-sp{
+  @include min-screen($bp_sp_h){
+    display: none;
+  }
+}
+
+.u-preload{
+  * {
+    transition: none !important;
+  }
+}
+
+.u-preline{
+  white-space: pre-line;
+}
