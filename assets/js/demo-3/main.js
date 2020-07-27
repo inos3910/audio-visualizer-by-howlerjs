@@ -3,7 +3,6 @@ import {Howl, Howler} from 'howler';
 export class Main {
   constructor() {
     this.createVisualizerData();
-    this.fadeOutAudioListner()
   }
 
   //オーディオビジュアライザーで扱うデータを生成
@@ -17,14 +16,6 @@ export class Main {
     });
   }
 
-  //フェードアウト後の処理
-  fadeOutAudioListner(){
-    this.sound.on('fade', () => {
-      this.sound.stop(this.playingSound);
-      this.playButton.classList.remove('is-play');
-    }, this.playingSound);
-  }
-
   playAudioHandler(){
     if (this.sound.playing()){
       this.stopAudio();
@@ -35,11 +26,13 @@ export class Main {
   }
 
   //音源を停止
-  stopAudio(duration = 1500){
-    //フェードアウト
-    this.sound.fade(1, 0, duration, this.playingSound);
-    //gainNodeをendTime（第二引数）までに0（第一引数）にする
-    this.gainNode.gain.linearRampToValueAtTime(0, Howler.ctx.currentTime + 2 );
+  stopAudio(){
+    this.sound.stop(this.playingSound);
+    //アニメーションを停止
+    if(this.drawTimer){
+      window.cancelAnimationFrame(this.drawTimer);
+      return;
+    }
   }
 
   //音源を再生
@@ -47,7 +40,6 @@ export class Main {
     this.initAudioVisualizer();
     this.sound.load();
     this.playingSound = this.sound.play();
-    this.playButton.classList.add('is-play');
     this.drawAudioVisualizer();
   }
 
@@ -68,13 +60,6 @@ export class Main {
 
   //オーディオビジュアライザーのSVGを描画
   drawAudioVisualizer(){
-    //gainが0になるとアニメーションを終了
-    if(this.gainNode.gain.value === 0){
-      if(this.drawTimer){
-        window.cancelAnimationFrame(this.drawTimer);
-        return;
-      }
-    }
     // 0~1 0に近い方が描画がスムーズになる
     this.analyserNode.smoothingTimeConstant = 0.1;
     // FFTサイズ
@@ -82,11 +67,9 @@ export class Main {
     // 周波数領域の波形データを引数の配列に格納する
     this.analyserNode.getByteFrequencyData(this.freqs);
     //SVG横幅が波形データに対してどのくらいの長さになるか
-    const barWidth = this.svg.width.baseVal.value / this.analyserNode.frequencyBinCount;
-
+    const barWidth = this.svg.width.baseVal.value * 1.5 / this.analyserNode.frequencyBinCount;
     //SVGのpathに適用
     this.drawSvgPath(barWidth);
-
     //毎フレームごとに描画
     this.drawTimer = window.requestAnimationFrame(this.drawAudioVisualizer.bind(this));
   }
@@ -95,9 +78,6 @@ export class Main {
   drawSvgPath(barWidth){
     let d = 'M';
     this.freqs.forEach((y, i) => {
-      // if(i % 3 === 0){
-      //   return;
-      // }
       const x       = i * barWidth;
       const value   = this.freqs[i];
       const percent = value / 255;

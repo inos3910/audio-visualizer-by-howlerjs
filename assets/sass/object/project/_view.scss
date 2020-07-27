@@ -14,6 +14,7 @@
     text-align: center;
     font-size: sizeCalc(30, $w_sp, 'vw');
     font-weight: 900;
+    line-height: 2;
     color:#fff;
     mix-blend-mode: overlay;
     @include min-screen($bp_tb_v){

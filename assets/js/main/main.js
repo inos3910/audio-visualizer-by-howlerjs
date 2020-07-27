@@ -39,7 +39,7 @@ export class Main {
     //フェードアウト
     this.sound.fade(1, 0, duration, this.playingSound);
     //gainNodeをendTime（第二引数）までに0（第一引数）にする
-    this.gainNode.gain.linearRampToValueAtTime(0, Howler.ctx.currentTime + 1.5 );
+    this.gainNode.gain.linearRampToValueAtTime(0, Howler.ctx.currentTime + 2 );
   }
 
   //音源を再生
