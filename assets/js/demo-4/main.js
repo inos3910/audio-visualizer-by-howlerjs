@@ -15,8 +15,9 @@ export class Main {
     this.svg        = document.getElementById('js-svg');
     this.svgPath    = this.svg.querySelector('path');
     this.sound      = new Howl({
-      // src : ['assets/audio/audio.mp3']
-      src : ['https://pool.anison.fm:9000/AniSonFM(320)'],
+      // src : ['assets/audio/audio.mp3'],
+      //src : ['https://pool.anison.fm:9000/AniSonFM(320)'],
+      src : ['https://musicbird.leanstream.co/JCB068-MP3'],
       html5: true
     });
   }

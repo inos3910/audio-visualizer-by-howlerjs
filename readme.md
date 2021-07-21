@@ -1,19 +1,20 @@
 # howler.js + SVGアニメーションでオーディオビジュアライザーを作ってみるデモ
-2020-07-27 12:12:02
+2021-07-21
 
 - howler.jsで音源を再生
 - howler.jsでWeb Audio APIのAudioContextを使って再生している音源の周波数を取得
 - 毎フレームごとに取得した周波数をSVGのパスに適用してアニメーションさせる
+- demo-4にてストリーミング音源にも対応
 
 ## 環境
 - node v14.5.0（nodebrew使用）
-- gulp 4.x
+- gulp 4.0.2
   - sassコンパイル
   - image 圧縮
   - svg 最適化
-- webpack 4.x
+- webpack 4.42.2
   - js バンドル 圧縮 最適化
-- babel 7.x
+- babel 7.7.0
   - js es6最適化
 - browserSync
   - ライブリロード
@@ -26,12 +27,6 @@
 ### npm scripts
 - `npm run dev` or `yarn dev` 開発モード
 - `npm run build` or `yarn build` 本番モードでビルド
-- `npm run imagemin` or `yarn imagemin` 画像圧縮
-- `npm run sprite` or `yarn sprite` スプライト画像の生成
-- `npm run spritemin` or `yarn spritemin`スプライト画像の圧縮
 
-### gulp タスク
+### gulp task
 - `npx gulp` or `yarn gulp` gulp起動
-- `npx gulp imagemin` or `yarn gulp imagemin` 画像圧縮
-- `npx gulp sprite` or `yarn gulp  sprite` スプライト画像の生成
-- `npx gulp spritemin` or `yarngulp  spritemin` スプライト画像の圧縮
