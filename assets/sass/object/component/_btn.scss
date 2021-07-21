@@ -10,6 +10,7 @@
   letter-spacing: .15em;
   color:#fff;
   transform-style: preserve-3d;
+  transition: transform $transition;
   @include min-screen($bp_tb_v){
     width: sizeCalc(300, $w, 'vw');
     height: sizeCalc(80, $w, 'vw');
@@ -42,6 +43,7 @@
     justify-content: center;
     border:1px solid;
     transition:$transition;
+    transition-property: transform, opacity, color, background;
     @include min-screen($bp_tb_v){
     }
     @include min-screen($bp_base){
@@ -57,7 +59,16 @@
 
     &--stop{
       opacity: 0;
-      transform: rotateX( 90deg) translateZ(25px);
+      transform: rotateX(90deg) translateZ(25px);
+      @include min-screen($bp_tb_v){
+      }
+      @include min-screen($bp_base){
+      }
+    }
+
+    &--loading{
+      opacity: 0;
+      transform: rotateX(-90deg) translateZ(25px);
       @include min-screen($bp_tb_v){
       }
       @include min-screen($bp_base){
@@ -66,13 +77,32 @@
   }
 
   &.is-play{
-    transform: translateZ(-25px) rotateX( -90deg);
+    transform: translateZ(-25px) rotateX(-90deg);
 
     .c-btn__face{
       &--play{
         opacity: 0;
       }
       &--stop{
+        opacity: 1;
+      }
+      &--loading{
+        opacity: 0;
+      }
+    }
+  }
+
+  &.is-loading{
+    transform: translateZ(-25px) rotateX(90deg);
+
+    .c-btn__face{
+      &--play{
+        opacity: 0;
+      }
+      &--stop{
+        opacity: 0;
+      }
+      &--loading{
         opacity: 1;
       }
     }
