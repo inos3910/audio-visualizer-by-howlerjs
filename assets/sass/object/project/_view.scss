@@ -40,6 +40,10 @@
     }
     @include min-screen($bp_base){
     }
+
+    .demo-4 & {
+      background: #7426d0;
+    }
   }
 
   &__svg{

@@ -51,8 +51,8 @@ export class Main {
   playAudio() {
     this.loading = true;
     this.playButton.classList.add('is-loading');
-    this.sound.load();
     this.initAudioVisualizer();
+    this.sound.load();
     this.playingSound = this.sound.play();
     this.playButton.classList.add('is-play');
     this.drawAudioVisualizer();
@@ -67,13 +67,6 @@ export class Main {
     this.audio.crossOrigin = 'anonymous';
     this.sourceAudio = !this.sourceAudio ? Howler.ctx.createMediaElementSource(this.audio): this.sourceAudio;
     this.sourceAudio.connect(this.analyserNode);
-
-    const source = Howler.ctx.createBufferSource();
-    const mediaStreamDest = Howler.ctx.createMediaStreamDestination();
-    source.connect(mediaStreamDest);
-    const {stream} = mediaStreamDest;
-    const input  = Howler.ctx.createMediaStreamSource(stream);
-    input.connect(this.analyserNode);
 
     this.freqs = new Uint8Array(this.analyserNode.frequencyBinCount);
     this._freqs = new Uint8Array(1);

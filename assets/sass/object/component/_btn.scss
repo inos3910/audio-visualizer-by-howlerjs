@@ -28,6 +28,10 @@
       .c-btn__face{
         color:#8ad026;
         background:#fff;
+
+        .demo-4 & {
+          color:#7426d0;
+        }
       }
     }
   }
@@ -96,6 +100,13 @@
     transform: translateZ(-25px) rotateX(90deg);
 
     .c-btn__face{
+      color:#8ad026;
+      background:#fff;
+
+      .demo-4 & {
+        color:#7426d0;
+      }
+
       &--play{
         opacity: 0;
       }
