@@ -1,4 +1,5 @@
 import {Howl, Howler} from 'howler';
+Howler.html5PoolSize = 1;
 
 export class Main {
   constructor() {
@@ -52,7 +53,6 @@ export class Main {
     this.loading = true;
     this.playButton.classList.add('is-loading');
     this.initAudioVisualizer();
-    this.sound.load();
     this.playingSound = this.sound.play();
     this.playButton.classList.add('is-play');
     this.drawAudioVisualizer();
@@ -60,7 +60,6 @@ export class Main {
 
   //オーディオビジュアライザーの初期設定 各ノードをつなぐ
   initAudioVisualizer(){
-    //音源を視覚化するために波形データの配列を取得する
     this.analyserNode = Howler.ctx.createAnalyser();
 
     this.audio = !this.audio ? Howler._html5AudioPool.slice(-1)[0] : this.audio;
