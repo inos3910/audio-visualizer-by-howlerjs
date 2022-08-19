@@ -17,8 +17,9 @@ export class Main {
     this.svgPath    = this.svg.querySelector('path');
     this.sound      = new Howl({
       // src : ['assets/audio/audio.mp3'],
-      //src : ['https://pool.anison.fm:9000/AniSonFM(320)'],
-      src : ['https://musicbird.leanstream.co/JCB068-MP3'],
+      src : ['https://pool.anison.fm:9000/AniSonFM(320)'],
+      // src : ['https://musicbird.leanstream.co/JCB068-MP3'], 配信停止
+      // src : ['https://shonanbeachfm.out.airtime.pro/shonanbeachfm_c'],
       html5: true
     });
   }
